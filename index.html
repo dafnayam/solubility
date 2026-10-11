@@ -1,18 +1,4 @@
 <!DOCTYPE html>
-<div id="high-scores" style="display: none;">
-    <h2>טבלת תוצאות גבוהות</h2>
-    <table id="high-scores-table">
-        <thead>
-            <tr>
-                <th>דירוג</th>
-                <th>שם</th>
-                <th>ניקוד</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    <button id="close-high-scores">סגור</button>
-</div>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -28,11 +14,11 @@
             margin: 0;
             background-color: #f0f0f0;
         }
-#game-container {
-    width: 100vw;
-    height: 100vh;
-    max-width: 1200px;
-    max-height: 800px;
+        #game-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: 1200px;
+            max-height: 800px;
             border: 2px solid #000;
             position: relative;
             overflow: hidden;
@@ -94,13 +80,13 @@
             background-image: url('https://www.cjoint.com/doc/24_07/NGstcFIzWd2_%D7%9E%D7%A9%D7%97%D7%A7-%D7%9E%D7%A1%D7%99%D7%A1%D7%9E%D7%95%D7%AA.png');
         }
         .snowman {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    background-image: url('https://www.cjoint.com/doc/24_07/NGuesz0F0Z2_iceball.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-image: url('https://www.cjoint.com/doc/24_07/NGuesz0F0Z2_iceball.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
         #end-game-message {
             position: absolute;
             top: 50%;
@@ -112,568 +98,165 @@
             text-align: center;
             display: none;
         }
-#start-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('https://www.cjoint.com/doc/24_07/NGurp7thBf2_123.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center 20%;
-}
+        #start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://www.cjoint.com/doc/24_07/NGurp7thBf2_123.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center 20%;
+        }
         #start-screen h1, #start-screen select, #start-screen button {
             margin: 10px;
         }
         #controls {
-    position: absolute;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-#start-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 25%;
-}
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        #start-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 25%;
+        }
+        body {
+            background: linear-gradient(45deg, #f3f3f3, #e1e1e1);
+        }
+        #game-container {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .molecule-group {
+            transition: all 0.3s ease-in-out;
+        }
+        .molecule-group:hover {
+            transform: scale(1.05);
+        }
+        .molecule {
+            transition: all 0.3s ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .molecule.pulse {
+            animation: pulse 0.5s ease-in-out;
+        }
+        #controls, #level {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #start-button, #close-high-scores {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #instructions-button {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            padding: 50px 50px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #instructions-button {
+            font-size: 18px;
+            padding: 15px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        #name-display {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }   
+        #start-button:hover, #close-high-scores:hover {
+            background-color: #45a049;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
     </style>
-<style>
-    body {
-        background: linear-gradient(45deg, #f3f3f3, #e1e1e1);
-    }
-    
-    #game-container {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    
-    .molecule-group {
-        transition: all 0.3s ease-in-out;
-    }
-    
-    .molecule-group:hover {
-        transform: scale(1.05);
-    }
-    
-    .molecule {
-        transition: all 0.3s ease-in-out;
-    }
-    
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-    }
-    
-    .molecule.pulse {
-        animation: pulse 0.5s ease-in-out;
-    }
-    
-    #controls, #level {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 5px 10px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    #start-button, #close-high-scores {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        transition-duration: 0.4s;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-#instructions-button {
-    position: absolute 5%;
-    bottom: 50px;
-    right: 50px;
-     padding: 50px 50px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-#instructions-button {
-    font-size: 18px;
-    padding: 15px;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
- #name-display {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 24px;
-    font-weight: bold;
-}   
-    #start-button:hover, #close-high-scores:hover {
-        background-color: #45a049;
-    }
-</style>
- </head>
+</head>
 <body>
     <div id="game-container">
-          <div id="start-screen">
-                       <select id="level-select">
+        <div id="start-screen">
+            <select id="level-select">
                 <option value="1">רמה 1</option>
                 <option value="2">רמה 2</option>
                 <option value="3">רמה 3</option>
             </select>
             <button id="start-button">התחל משחק</button>
-<button id="instructions-button">הנחיות</button>
+            <button id="instructions-button">הנחיות</button>
         </div>
         <div id="level">רמה: <span id="level-value">1</span></div>
         <div id="controls">
-                    <div id="time-control">⏳ זמן: <span id="time-value">60</span></div>
+            <div id="time-control">⏳ זמן: <span id="time-value">60</span></div>
             <div id="score-control">ניקוד: <span id="score-value">0</span></div>
         </div>
         <div id="end-game-message"></div>
     </div>
 
+    <div id="name-modal" class="modal">
+        <div class="modal-content">
+            <h2>הכנס את שמך</h2>
+            <input type="text" id="player-name-input">
+            <button id="submit-name">התחל</button>
+        </div>
+    </div>
+
     <script>
     const mixSound = new Audio("data:audio/wav;base64,UklGRigBAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQBAADpAFgCuwH7/uT7+9D5Cvfo9PfyLvM09Dv2xfgX+3L9rv/0ATUEYgZ8BuUFRAKb/P/27vMS8xD0esbwvCa5arx3vgPLzdnf56/2PQCFA0cDPwAdAnYFPwT//nj8Z/xHAipMLCvGFMr63vFf/z0Nqh2GKOgmAxa8/mrtSd9U0/fLq8aRxJjHq8zA0wfcZOS77d/3sADJAGcEuAeSBCkAV/3v+vz2E/fl+24KxxLEGAUcJRkODmz8Gu26X58qix+BIyhX/W3Ld1KFkYvgiR2GinigW11EhzMmKOkfLRiiGFUciiAhJGAjdRymDsL/LvH16OziUtyB1bvPt8xTzLrOrtK61srabN9u5abrlfLx+Tb+GQLlBSQI7QXRAOf5OvZo9R/3avvtAPYFOwk2DPINda/i");
 
-const rejectSound = new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZSA0PVK3n77BdGAg+ltryxnMpBSl+zPLaizsIGGS57OihUBELTKXh8bllHgU2jdXzzn0vBSF1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUuhM/z1YU2Bhxqvu7mnEoODlGq5O+zYBoGPJPY88p2KwUme8rx3I4+CRZiturqpVITC0mi4PK8aB8GM4nU8tGAMQYfcsLu45ZFDBBYr+ftrVoXCECY3PLEcSYELIHO8diJOQcZaLvt559NEAxPqOPwtmMcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66hVFApGnt/yvmwhBTCG0fPTgjQGHW/A7eSaRw0PVK3m77BeGQc9ltvyxnUoBSh+zPDaizsIGGS56+mjTxELTKXh8bllHgU1jdT0z3wvBSJ0xe/glEILElyx6OyrWRUIRJve8sFuJAUug8/z1oU2Bhxqvu3mnEoPDVKp5O+zYRsGPJLZ88p3KgUme8rx3I4+CRVht+rqpVMSC0mh4PK8aiAFM4nU8tGAMQYfccPu45ZFDBBYr+ftrVwWCECY3PLEcSYGK4DN8tiIOQcZZ7zs56BODwxPpuPxtmQcBjiP1/PMeywGI3fH8N+RQAoUXrTp66hWEwlGnt/yv2wiBDCG0fPTgzQHHG/A7eSaSQ0PVKzm77BeGQc9ltrzxnUoBSh9y/HajDsIF2W56+mjUREKTKPi8blnHgU1jdTy0HwvBSF0xPDglEQKElux6eyrWRUJQ5vd88FwJAQug8/z1oY2Bhxqvu3mnEwODFGp5O+zYRsGOpPX88p3KgUmecnw3Y4/CBVhtuvqpVMSC0mh4PK9aiAFM4nS89GAMQYfccLv45dGCw9Yr+ftrVwXCECY3PLEcicFKoDN8tiIOQcZZ7rs56BODwxPpuPxt2MdBTiP1/PMey4FI3bH8d+RQQkUXbPq66hWFQlGnt/yv2wiBDCG0PPTgzUGHG3A7uSaSQ0PVKzm77FfGAc9ltrzyHQpBSh9y/HajDwIF2S46+mjUREKTKPi8bpoHgU1jdTy0H4wBiF0xPDglEQKElux5+2sWBUJQ5vd88NvJAUtg87y1oY3Bhxqvu3mnEwODFGp5PC1YRsHOpHY88p3LAUlecnw3Y8+CBZhtuvqpVMSC0mh4PK9aiAFMojT89GBMgUfccLv45dGCw9Xr+ftrV0WCT+Y3PLEcycFKn/O8tiKOQgZZ7vs56BOEAxOpePxt2UcBTmO1/PNfC4FI3bH79+RQQoTXbPq66hWFQlFlw==");
-        function addPulseEffect(element) {
-        element.classList.add('pulse');
-        setTimeout(() => {
-            element.classList.remove('pulse');
-        }, 500);
-    }
-        const gameContainer = document.getElementById('game-container');
-        const startScreen = document.getElementById('start-screen');
-        const levelSelect = document.getElementById('level-select');
-        const startButton = document.getElementById('start-button');
-        const scoreElement = document.getElementById('score-value');
-        const levelElement = document.getElementById('level-value');
-        const timeElement = document.getElementById('time-value');
-        
-        let score = 0;
-        let level = 1;
-        let timeLeft = 60;
-        let blueGroup;
-        let whiteGroups = [];
-        let gameInterval;
-        let snowmen = [];
-        let gameOver = false;
-        createNameDisplay();
-        function createNameDisplay() {
-    const nameDisplay = document.createElement('div');
-    nameDisplay.id = 'name-display';
-    nameDisplay.style.position = 'absolute';
-    nameDisplay.style.top = '10px';
-    nameDisplay.style.left = '10px';
-    nameDisplay.style.fontSize = '24px';
-    nameDisplay.style.fontWeight = 'bold';
-    gameContainer.appendChild(nameDisplay);
-}
-        
-        const blueFormulas = ['NH3', 'CH4', 'I2', 'CH3OCH3'];
-        const whiteFormulas = ['H2O', 'CH3OH', 'C8H18', 'CS2', 'CH3COCH3'];
-        
-        startButton.addEventListener('click', startGame);
-let highScores = [];
-
-function updateHighScores(newScore) {
-    const playerName = prompt("הכנס את שמך עבור טבלת התוצאות הגבוהות:");
-    highScores.push({ name: playerName, score: newScore });
-    highScores.sort((a, b) => b.score - a.score);
-    highScores = highScores.slice(0, 5);  // שמור רק את 5 התוצאות הגבוהות ביותר
-    
-    const highScoresTable = document.getElementById('high-scores-table').getElementsByTagName('tbody')[0];
-    highScoresTable.innerHTML = '';
-    highScores.forEach((score, index) => {
-        const row = highScoresTable.insertRow();
-        row.insertCell(0).textContent = index + 1;
-        row.insertCell(1).textContent = score.name;
-        row.insertCell(2).textContent = score.score;
-    });
-    
-    document.getElementById('high-scores').style.display = 'block';
-}
-
-document.getElementById('close-high-scores').addEventListener('click', () => {
-    document.getElementById('high-scores').style.display = 'none';
-    resetGame();
-});        
-function startGame() {
-       // מוחק את כל הקבוצות והאובייקטים הקיימים
-       if (blueGroup) blueGroup.remove();
-       whiteGroups.forEach(group => group.remove());
-       snowmen.forEach(snowman => snowman.remove());
-       
-       // מאפס את המערכים
-       whiteGroups = [];
-       snowmen = [];
-       
-       // מאתחל מחדש את המשחק
-       level = parseInt(levelSelect.value);
-       levelElement.textContent = level;
-       score = 0;
-       timeLeft = 60 + (level - 1) * 30;
-       updateScore();
-       updateTimer();
-       
-       startScreen.style.display = 'none';
-       const playerName = prompt("הכנס את שמך:");
-document.getElementById('name-display').textContent = `שחקן: ${playerName}`;
-       createBlueGroup();
-       createWhiteGroups();
-       createSnowmen();
-       
-       if (gameInterval) {
-           clearInterval(gameInterval);
-       }
-       gameInterval = setInterval(updateTimer, 1000);
-       
-       document.addEventListener('keydown', moveBlueGroup);
-   }
-        
-        function createMolecule(formula, isBlue) {
-            const molecule = document.createElement('div');
-            molecule.className = `molecule ${isBlue ? 'blue-molecule' : 'white-molecule'} ${formula}`;
-            return molecule;
-        }
-        
-        function createMoleculeGroup(isBlue, formula) {
-            const group = document.createElement('div');
-            group.className = `molecule-group ${isBlue ? 'blue-group' : 'white-group'}`;
-            for (let i = 0; i < 6; i++) {
-                const molecule = createMolecule(formula, isBlue);
-                molecule.style.left = `${(i % 3) * 40}px`;
-                molecule.style.top = `${Math.floor(i / 3) * 40}px`;
-                group.appendChild(molecule);
-            }
-            return group;
-        }
-        
-        function createBlueGroup() {
-            if (blueGroup) {
-                blueGroup.remove();
-            }
-            const formula = blueFormulas[Math.floor(Math.random() * blueFormulas.length)];
-            blueGroup = createMoleculeGroup(true, formula);
-            blueGroup.style.left = '340px';
-            blueGroup.style.top = '240px';
-            gameContainer.appendChild(blueGroup);
-        }
-        
-        function createWhiteGroups() {
-            whiteGroups.forEach(group => group.remove());
-            whiteGroups = [];
-            const positions = [
-                {left: 100, top: 100},
-                {left: 350, top: 100},
-                {left: 600, top: 100},
-                {left: 100, top: 350},
-                {left: 600, top: 350}
-            ];
-            whiteFormulas.forEach((formula, index) => {
-                const group = createMoleculeGroup(false, formula);
-                const randomPosition = positions.splice(Math.floor(Math.random() * positions.length), 1)[0];
-                group.style.left = `${randomPosition.left}px`;
-                group.style.top = `${randomPosition.top}px`;
-                whiteGroups.push(group);
-                gameContainer.appendChild(group);
-            });
-        }
-function createSnowmen() {
-    for (let i = 0; i < 3; i++) {
-        let validPosition = false;
-        let snowmanLeft, snowmanTop;
-        
-        while (!validPosition) {
-            snowmanLeft = Math.random() * (gameContainer.clientWidth - 50);
-            snowmanTop = Math.random() * (gameContainer.clientHeight - 50);
-            
-            // בדיקה שהמרחק מהקבוצה הכחולה הוא לפחות 100 פיקסלים
-            const distanceFromBlue = Math.sqrt(
-                Math.pow(snowmanLeft - 340, 2) + 
-                Math.pow(snowmanTop - 240, 2)
-            );
-            
-            if (distanceFromBlue > 100) {
-                validPosition = true;
-            }
-        }
-        
-        const snowman = document.createElement('div');
-        snowman.className = 'snowman';
-        snowman.style.left = `${snowmanLeft}px`;
-        snowman.style.top = `${snowmanTop}px`;
-        gameContainer.appendChild(snowman);
-        snowmen.push(snowman);
-    }
-}
-
-function moveBlueGroup(event) {
-    const key = event.key;
-    const step = 7;  // הגדלנו את גודל הצעד
-    let left = parseInt(blueGroup.style.left);
-    let top = parseInt(blueGroup.style.top);
-    
-    switch (key) {
-        case 'ArrowLeft':
-            left = Math.max(0, left - step);
-            break;
-        case 'ArrowRight':
-            left = Math.min(gameContainer.clientWidth - 120, left + step);
-            break;
-        case 'ArrowUp':
-            top = Math.max(0, top - step);
-            break;
-        case 'ArrowDown':
-            top = Math.min(gameContainer.clientHeight - 120, top + step);
-            break;
-    }
-    
-    blueGroup.style.left = `${left}px`;
-    blueGroup.style.top = `${top}px`;
-    
-    checkCollision();
-}
-        function checkCollision() {
-            const blueRect = blueGroup.getBoundingClientRect();
-            const blueCenter = {
-                x: blueRect.left + blueRect.width / 2,
-                y: blueRect.top + blueRect.height / 2
-            };
-            
-            whiteGroups.forEach(whiteGroup => {
-                const whiteRect = whiteGroup.getBoundingClientRect();
-                const whiteCenter = {
-                    x: whiteRect.left + whiteRect.width / 2,
-                    y: whiteRect.top + whiteRect.height / 2
-                };
-                
-                const distance = Math.sqrt(
-                    Math.pow(blueCenter.x - whiteCenter.x, 2) +
-                    Math.pow(blueCenter.y - whiteCenter.y, 2)
-                );
-                
-                if (distance < 60) {  // 60 is half the width/height of a group
-                    handleCollision(blueGroup, whiteGroup);
-                }
-            });
-            snowmen.forEach(snowman => {
-    const snowmanRect = snowman.getBoundingClientRect();
-    const distance = Math.sqrt(
-        Math.pow(blueCenter.x - (snowmanRect.left + snowmanRect.width / 2), 2) +
-        Math.pow(blueCenter.y - (snowmanRect.top + snowmanRect.height / 2), 2)
-    );
-    if (distance < 30) {
-        endGame();
-    }
-});
-        }
-        
-        
-      function handleCollision(blue, white) {
-            const blueFormula = blue.querySelector('.molecule').className.split(' ')[2];
-            const whiteFormula = white.querySelector('.molecule').className.split(' ')[2];
-        
-        if (canMix(blueFormula, whiteFormula)) {
-            mix(blue, white);
-            playSound('mix');
-            score++;
-            updateScore();
-            addPulseEffect(blue);
-            addPulseEffect(white);
-        } else {
-            reject(blue, white);
-            playSound('reject');
-            score = Math.max(0, score - 1);
-            updateScore();
-        }
-            
-            setTimeout(() => {
-                resetPositions(blue, white);
-                createBlueGroup();  // Create a new blue group after each interaction
-            }, 2000);
-        }
-        
-        function canMix(formula1, formula2) {
-            const solubilityRules = {
-                'I2': ['C8H18', 'CS2'],
-                'NH3': ['H2O', 'CH3OH', 'CH3COCH3'],
-                'CH4': ['CS2', 'C8H18', 'CH3COCH3'],
-                'CH3OCH3': ['CS2', 'C8H18', 'CH3COCH3', 'CH3OH', 'H2O']
-            };
-            
-            return solubilityRules[formula1]?.includes(formula2) || solubilityRules[formula2]?.includes(formula1);
-        }
-        
-        function mix(blue, white) {
-            const whiteRect = white.getBoundingClientRect();
-            const blueMolecules = [...blue.children];
-            const whiteMolecules = [...white.children];
-            
-            const allMolecules = [...blueMolecules, ...whiteMolecules];
-            
-            allMolecules.forEach(molecule => {
-                const randomX = Math.random() * (whiteRect.width - 40);
-                const randomY = Math.random() * (whiteRect.height - 40);
-                
-                molecule.style.left = `${randomX}px`;
-                molecule.style.top = `${randomY}px`;
-                molecule.style.animation = 'uniform-mix 2s ease-in-out infinite';
-            });
-        }
-        
-        function reject(blue, white) {
-            blue.style.animation = 'uniform-mix 0.5s ease-in-out';
-            white.style.animation = 'uniform-mix 0.5s ease-in-out';
-            
-            setTimeout(() => {
-                blue.style.animation = '';
-                white.style.animation = '';
-            }, 500);
-        }
-        
-function resetPositions(blue, white) {
-    blue.style.left = '340px';
-    blue.style.top = '240px';
-    
-    const blueMolecules = [...blue.children];
-    const whiteMolecules = [...white.children];
-    
-    blueMolecules.forEach((molecule, index) => {
-        molecule.style.left = `${(index % 3) * 40}px`;
-        molecule.style.top = `${Math.floor(index / 3) * 40}px`;
-        molecule.style.animation = '';
-    });
-    
-    whiteMolecules.forEach((molecule, index) => {
-        molecule.style.left = `${(index % 3) * 40}px`;
-        molecule.style.top = `${Math.floor(index / 3) * 40}px`;
-        molecule.style.animation = '';
-    });
-    createWhiteGroups();
-}
-
-function playSound(type) {
-       if (type === 'mix') {
-           mixSound.play();
-       } else if (type === 'reject') {
-           rejectSound.play();
-       }
-   }
-
-
-function updateTimer() {
-    timeLeft--;
-    timeElement.textContent = timeLeft;
-    if (timeLeft <= 0) {
-        endGame();
-    }
-}
-
-function updateScore() {
-    scoreElement.textContent = score;
-}
-
-function endGame() {
-    clearInterval(gameInterval);
-    document.removeEventListener('keydown', moveBlueGroup);
-    const endGameMessage = document.getElementById('end-game-message');
-    endGameMessage.innerHTML = `<h2>המשחק נגמר!</h2><p>הניקוד הסופי שלך: ${score}</p>`;
-    endGameMessage.style.display = 'block';
-    
-    const playAgainButton = document.createElement('button');
-    playAgainButton.textContent = 'שחק שוב';
-    playAgainButton.onclick = () => {
-        endGameMessage.style.display = 'none';
-        resetGame();
-    };
-    endGameMessage.appendChild(playAgainButton);
-    
-    updateHighScores(score);
-}
-
-
-        function resetGame() {
-            score = 0;
-            timeLeft = 60;
-            updateScore();
-            updateTimer();
-            
-            if (blueGroup) {
-                blueGroup.remove();
-                blueGroup = null;
-            }
-            whiteGroups.forEach(group => group.remove());
-            whiteGroups = [];
-            
-            startScreen.style.display = 'flex';
-        }
-        function resetGame() {
-    score = 0;
-    timeLeft = 60 + (level - 1) * 30;
-    updateScore();
-    updateTimer();
-    
-    if (blueGroup) {
-        blueGroup.remove();
-        blueGroup = null;
-    }
-    whiteGroups.forEach(group => group.remove());
-    whiteGroups = [];
-    snowmen.forEach(snowman => snowman.remove());
-    snowmen = [];
-    
-    startScreen.style.display = 'flex';
-}
-document.getElementById('instructions-button').addEventListener('click', () => {
-    const instructionsImage = document.createElement('img');
-    instructionsImage.src = 'https://www.cjoint.com/doc/24_07/NGvgYUKpXh2_instruction1.png';
-    instructionsImage.style.maxWidth = '80%';
-    instructionsImage.style.maxHeight = '80%';
-    instructionsImage.style.position = 'fixed';
-    instructionsImage.style.top = '50%';
-    instructionsImage.style.left = '50%';
-    instructionsImage.style.transform = 'translate(-50%, -50%)';
-    instructionsImage.style.zIndex = '1000';
-    document.body.appendChild(instructionsImage);
-    
-    const closeButton = document.createElement('button');
-    closeButton.textContent = 'X';
-    closeButton.style.position = 'fixed';
-    closeButton.style.top = '10%';
-    closeButton.style.right = '10%';
-    closeButton.style.zIndex = '1001';
-    closeButton.style.fontSize = '24px';
-    closeButton.style.padding = '10px 20px';
-    closeButton.style.cursor = 'pointer';
-    document.body.appendChild(closeButton);
-    
-    closeButton.onclick = () => {
-        instructionsImage.remove();
-        closeButton.remove();
-    };
-});
-    </script>
-</body>
-</html>
-
+    const rejectSound = new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZSA0PVK3n77BdGAg+ltryxnMpBSl+zPLaizsIGGS57OihUBELTKXh8bllHgU2jdXzzn0vBSF1xe/glEILElyx6OyrWBUIQ5zd8sFuJAUuhM/z1YU2Bhxqvu7mnEoODlGq5O+zYBoGPJPY88p2KwUme8rx3I4+CRZiturqpVITC0mi4PK8aB8GM4nU8tGAMQYfcsLu45ZFDBBYr+ftrVoXCECY3PLEcSYELIHO8diJOQcZaLvt559NEAxPqOPwtmMcBjiP1/PMeS0GI3fH8N2RQAoUXrTp66h
+   
